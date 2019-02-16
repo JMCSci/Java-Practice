@@ -1,4 +1,4 @@
-// Program that evaluates a quadradic equation
+// Program that evaluates a quadratic equation
 
 import java.util.Scanner;
 import java.lang.Math; 
