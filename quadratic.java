@@ -23,7 +23,6 @@ class practice
 			
 			QFormula = (- b + Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
 			
-			System.out.printf("The answer is: " + "%.2f", QFormula);
-			
+			System.out.printf("The answer is: " + "%.2f", QFormula);	
 		}
 	}	
