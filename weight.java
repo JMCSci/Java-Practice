@@ -13,6 +13,6 @@ class practice
 			weight = input.nextDouble(); 
 			decimal = weight - Math.floor(weight); // leaves numbers after decimal
 			ounces = (decimal * 16);
-			System.out.println("You weigh " + (int)(weight) + " pounds and " + ounces + " ounces"); 
+			System.out.printf("You weigh " + (int)(weight) + " pounds and " + "%.0f" + " ounces.", ounces); 
 		}
 	}
