@@ -9,20 +9,17 @@ public class practice2
 {
 		public static void main(String[] args)
 		{
-			// 16 ounces in 1 pound
-			// 28.35 grams in 1 ounce
 			// cost of 1st ounce = 0.33; cost of additional ounce = 0.17 
 			
-
 			double cost1 = 0.33; 
 			double cost2 = 0.17; 
-			double weight; 									                 // weight in ounces
+			double weight; 						     // weight in ounces
 
 			Scanner input = new Scanner(System.in);
 			System.out.print("Please enter the weight of your package in ounces: ");
 			weight = input.nextDouble();
-			double firstOunce = ((weight / weight) * cost1); // cost of first ounce
-			double addOunce = ((weight - 1)* cost2);		     // cost of each additional ounce
+			double firstOunce = ((weight / weight) * cost1);	    // cost of first ounce
+			double addOunce = ((weight - 1)* cost2);		    // cost of each additional ounce
 			double totalCost = firstOunce + addOunce; 
 			System.out.printf("The cost of your package is $" + "%.2f.", totalCost);	
 		}
