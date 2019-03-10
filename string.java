@@ -10,7 +10,7 @@ public class practice2 {
 		String name;
 		System.out.print("Enter your name: ");
 		name = input.nextLine(); 
-		System.out.println("Hello " + name + "");	
+		System.out.println("Hello " + name);	
 		input.close();
 	}
 }
