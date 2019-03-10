@@ -16,7 +16,7 @@ public class practice2 {
 		String name;
 		int number;
 		System.out.print("Enter your name: ");
-		name = input.nextLine(); 
+		name = input.next(); 
 		System.out.println("Hello " + name);	
 		newLine(); 
 		System.out.print(name + ", please enter 1, 5 or 10: ");
