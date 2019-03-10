@@ -9,7 +9,7 @@ public class practice2 {
 		Scanner input = new Scanner(System.in);
 		String name;
 		System.out.print("Enter your name: ");
-		name = input.nextLine(); 
+		name = input.next(); 
 		System.out.println("Hello " + name);	
 		input.close();
 	}
