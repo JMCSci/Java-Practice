@@ -23,7 +23,7 @@ public class practice2 {
 		number = input.nextInt();
 		switch(number) {
 		case 1: System.out.println(name + ", you picked 1. Thank you. \n\n ---END OF PROGRAM---"); break;
-		case 5: System.out.println(name + ", you picked 2. Thank you. \n\n ---END OF PROGRAM---"); break;
+		case 5: System.out.println(name + ", you picked 5. Thank you. \n\n ---END OF PROGRAM---"); break;
 		case 10: System.out.println(name + ", you picked 10. Thank you."); break; 
 		default: System.out.println("Sorry " + name + ", you selected an invalid number.\n\n ---END OF PROGRAM---");
 		input.close();
