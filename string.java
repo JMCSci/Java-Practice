@@ -11,5 +11,6 @@ public class practice2 {
 		System.out.print("Enter your name: ");
 		name = input.nextLine(); 
 		System.out.println("Hello " + name + "");	
+		input.close();
 	}
 }
