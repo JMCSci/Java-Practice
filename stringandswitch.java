@@ -2,9 +2,15 @@ package practice2;
 
 import java.util.Scanner;
 
-// practice String and switch
+// practice String, switch, methods
+
 
 public class practice2 {
+
+	public static void newLine(){			// empty line
+		System.out.println();
+	}
+
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		String name;
@@ -12,6 +18,7 @@ public class practice2 {
 		System.out.print("Enter your name: ");
 		name = input.nextLine(); 
 		System.out.println("Hello " + name);	
+		newLine(); 
 		System.out.print(name + ", please enter 1 , 5 or 10: ");
 		number = input.nextInt();
 		switch(number) {
@@ -21,5 +28,5 @@ public class practice2 {
 		default: System.out.println("Invalid number"); 
 		input.close();
 		}
-  }
-}
+   	 }
+   }
