@@ -25,7 +25,7 @@ public class practice2 {
 		case 1: System.out.println(name + ", you picked 1. Thank you."); break;
 		case 5: System.out.println(name + ", you picked 2. Thank you."); break;
 		case 10: System.out.println(name + ", you picked 10. Thank you."); break; 
-		default: System.out.println("Invalid number"); 
+		default: System.out.println("Sorry " + name + ", you selected an invalid number."); 
 		input.close();
 		}
    	 }
