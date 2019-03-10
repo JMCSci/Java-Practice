@@ -19,7 +19,7 @@ public class practice2 {
 		name = input.nextLine(); 
 		System.out.println("Hello " + name);	
 		newLine(); 
-		System.out.print(name + ", please enter 1 , 5 or 10: ");
+		System.out.print(name + ", please enter 1, 5 or 10: ");
 		number = input.nextInt();
 		switch(number) {
 		case 1: System.out.println(name + ", you picked 1. Thank you. \n\n ---END OF PROGRAM---"); break;
