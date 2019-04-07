@@ -8,14 +8,14 @@ public class practice2 {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		int[] a = new int [11]; 
-		int sum = 0, i, max = 0;
+		int sum = 0, max = 0, i;
 		double avg;
 		System.out.println("Enter 11 integers: ");
 		// input 11 values
 		for(i = 0; i < 11; i++) {
 			a[i] = input.nextInt(); 
 		}
-		// sum values in array
+		// sums values in array
 		for(int j = 0; j < 11; j++) {
 			sum = a[j] + sum;
 		}
