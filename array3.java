@@ -11,16 +11,20 @@ public class practice2 {
 		int sum = 0, i, max = 0;
 		double avg;
 		System.out.println("Enter 11 integers: ");
+		// input 11 values
 		for(i = 0; i < 11; i++) {
 			a[i] = input.nextInt(); 
 		}
+		// sum values in array
 		for(int j = 0; j < 11; j++) {
 			sum = a[j] + sum;
 		}
+		// calculate average
 		avg = sum/11;
-		// scan entire array -- number < than average && greater than previous scanned number is the max number
+		// sets first element in array as max ONLY if it's less than the average
 		if(a[0] < avg)
 			max = a[0]; 
+		// scans entire array -- number < than average && greater than the max is the new max number
 		for(i = 0; i < 11; i++) { 
 			if(a[i] < avg && a[i] > max)
 				max = a[i];
