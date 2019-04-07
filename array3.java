@@ -1,4 +1,4 @@
-/*Find average and the largest integer which is less than the average */
+/* Find average and the largest integer which is less than the average */
 
 package practice2;
 
