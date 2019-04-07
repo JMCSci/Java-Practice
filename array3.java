@@ -19,8 +19,10 @@ public class practice2 {
 		}
 		avg = sum/11;
 		// scan entire array -- number < than average && greater than previous scanned number is the max number
+		if(a[0] < avg)
+			max = a[0]; 
 		for(i = 0; i < 11; i++) { 
-			if(a[i] < avg && a[i] > a[1]-1)
+			if(a[i] < avg && a[i] > max)
 				max = a[i];
 		}
 		System.out.println("The sum is: " + sum);
