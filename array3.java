@@ -30,8 +30,8 @@ public class practice2 {
 				max = a[i];
 		}
 		System.out.println("The sum is: " + sum);
-		System.out.println("The average: " + avg); 
-		System.out.println("Largest integer less than the avg is " + max);
+		System.out.println("The average is: " + avg); 
+		System.out.println("The largest integer less than the average is " + max);
 		input.close();
 	}
 }
