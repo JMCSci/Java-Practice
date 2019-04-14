@@ -6,7 +6,7 @@ import java.io.File;
 public class practice2 {
 	public static void main(String[] args) throws Exception {
 		Scanner input = new Scanner(new File("/Users/jasonmoreau/Desktop/test.txt"));
-		int temp, x = 0;
+		int average, temp, sum = 0, x = 0;
 		x = num(x);
 		int [] array = new int [x];
 		// input data from file
@@ -31,8 +31,19 @@ public class practice2 {
 		// print sorted array
 		for(int i = 0; i < array.length - 1; i++)
 			System.out.println(array[i]);
+		
+		// sum array and compute average
+		for(int i = 0; i < array.length - 1; i++)
+			sum = array[i] + sum;
+			average = sum / array.length; 
+			
+			blank();
+		// print sum and average
+			System.out.println("The sum of the array elements is: " + sum);
+			System.out.println("The average value of the array is " + average);
+			
 	}
-		// ask user for array size -- returns value
+		// Method num -- ask user for array size -- returns value
 		public static int num (int x) {
 			Scanner input = new Scanner(System.in);
 			int y = 0;
@@ -40,6 +51,7 @@ public class practice2 {
 			y = input.nextInt();
 			return y;
 		}
+		// Method blank -- prints empty line
 		public static void blank() {
 		System.out.println();
 	}
