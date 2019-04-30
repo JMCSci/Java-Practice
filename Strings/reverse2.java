@@ -12,6 +12,7 @@ public class practice2 {
 		System.out.print("Enter your last name: ");
 		lastName = input.next(); 
 		reverse(firstName, lastName);
+		input.close();
 	}
 	public static void reverse(String firstName, String lastName) {
 		char temp;
