@@ -19,16 +19,13 @@ public class practice2 {
 		readData(arrayNum, arrayNames);
 		sortDescend(arrayNum, arrayNames);
 		System.out.println("\nSorted Array (DESCENDING)");
-		for(int i = 0; i < arrayNum.length; i++)
-			System.out.println(arrayNum[i] + "\t" + arrayNames[i]);
+		printArray(arrayNum, arrayNames);
 		System.out.println("\nSorted Array (ASCENDING)");
 		sortAscend(arrayNum, arrayNames);
-		for(int i = 0; i < arrayNum.length; i++)
-			System.out.println(arrayNum[i] + "\t" + arrayNames[i]);
+		printArray(arrayNum, arrayNames);
 		increaseVal(arrayNum);
 		System.out.println("\nArray value increased by 150");
-		for(int i = 0; i < arrayNum.length; i++)
-			System.out.println(arrayNum[i] + "\t" + arrayNames[i]);
+		printArray(arrayNum, arrayNames);
 	}
 	// method will read in data
 	public static void readData(int arrayNum[], String arrayNames[]) throws Exception {
@@ -83,6 +80,10 @@ public class practice2 {
 		for(int i = 0; i < arrayNum.length; i++) {
 			arrayNum[i] = arrayNum[i] + 150; 
 		}
+	}
+	public static void printArray(int arrayNum[], String arrayNames[]) {
+		for(int i = 0; i < arrayNum.length; i++)
+			System.out.println(arrayNum[i] + "\t" + arrayNames[i]);
 	}
 	
 }
