@@ -20,6 +20,27 @@ public class TestDynamicStack {
 		dynamic.push(15.00);
 		dynamic.push(16.00);
 		dynamic.push(17.00);
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
+		System.out.println(dynamic.pop());
 		System.out.println(dynamic.peek());
+		dynamic.push(5.25);
+		System.out.println(dynamic.peek());
+		System.out.println(dynamic.getTop());
+		System.out.println(dynamic.getBottom());
 	}
 }
