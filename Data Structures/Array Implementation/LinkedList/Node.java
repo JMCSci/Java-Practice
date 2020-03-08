@@ -35,9 +35,9 @@ public class Node {
 	}
 	
 	/* traverse: Traverse linked list -- for loop
-	 * Set condition as head of linked list
-	 *  Increment to loop by setting x to the next node 
-	 *  Stop when the x is equal to null
+	 * Set condition; head of linked list is beginning of loop
+	 * Increment loop by setting x to the next node 
+	 * Stop when x is equal to null
 	 */
 	public void traverse(Node head) {
 		for(Node x = head; x != null; x = x.next) {
