@@ -10,7 +10,7 @@ public class Node {
 		
 	}
 	
-	Node(int data){
+	Node(int data) {
 		this.data = data;
 	}
 	
@@ -29,8 +29,6 @@ public class Node {
 		}
 	}
 	
-	
-	
 	public static void main(String[] args) {
 		Node node = new Node(0);
 		Node node1 = new Node(1);
@@ -38,11 +36,10 @@ public class Node {
 		
 		node.next = node1; 
 		node1.next = node2;
-		System.out.println("Traverse Node using for-loop");
+		System.out.println("Traverse LinkedList using for-loop");
 		traverse(node);
-		System.out.println("\nTraverse Node using While-loop");
+		System.out.println("\nTraverse LinkedList using While-loop");
 		traverseWhile(node);
 	}
-	
 	
 }
