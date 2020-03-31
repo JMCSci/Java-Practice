@@ -41,6 +41,31 @@ public class Node {
 		
 	}
 	
+	boolean contains(int value) {
+		// BASE CASE -- STOPPING CONDITION
+		if(value == data) {
+			return true;
+		// If value is less than data, check if left exists	
+		} else if (value < data) {
+			// If not, return false
+			if(left == null) {
+				return false;
+			// If it does, recursive call to left node
+			} else {
+				return left.contains(value);
+			}		
+		// If value is greater than data, check if right exists	
+		} else {
+			// If not, return false
+			if(right == null) {
+				return false;
+			} 
+		}
+		// If it does, recursive call to right node
+			return right.contains(value);
+
+	}
+	
 	void printInorder() {
 		// Left 
 		if(left != null) {
@@ -80,5 +105,7 @@ public class Node {
 			right.printPreorder();
 		}
 	}
+
+
 
 }
