@@ -16,7 +16,9 @@ public class SinglyLinkedList {
 
 class Node {
 	int data;
+	int index;				// create an index for this node
 	Node next;
+	
 	
 	Node(int data) {
 		this.data = data;
@@ -27,6 +29,7 @@ class Node {
 class LinkedList {
 	Node head;
 	Node tail;
+	int size;
 	
 	LinkedList() {
 		
@@ -37,9 +40,13 @@ class LinkedList {
 		Node node = new Node(data);
 		if(tail == null) {
 			head = tail = node;
+			size = 1;
+			node.index = size - 1;
 		} else {
 			tail.next = node;
 			tail = tail.next;
+			size++;
+			node.index = size - 1; 
 		}
 	}
 	
@@ -50,6 +57,10 @@ class LinkedList {
 			System.out.println(current.data);
 			current = current.next;
 		}
+	}
+	
+	int size() {
+		return size;
 	}
 	
 	
