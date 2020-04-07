@@ -41,7 +41,7 @@ class LinkedList {
 			head = tail = node;
 		} else {
 			tail.next = node;
-			node.prev = tail;
+			tail.prev = tail;
 			tail = tail.next;
 			tail.next = head;
 			head.prev = tail;
