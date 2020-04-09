@@ -43,7 +43,8 @@ public class Node {
 		
 	}
 	
-	boolean contains(int value) {
+	// containsR: Searches for node (Recursive)
+	boolean containsR(int value) {
 		// BASE CASE -- STOPPING CONDITION
 		if(value == data) {
 			return true;
@@ -54,7 +55,7 @@ public class Node {
 				return false;
 			// If it does, recursive call to left node
 			} else {
-				return left.contains(value);
+				return left.containsR(value);
 			}		
 		// If value is greater than data, check if right exists	
 		} else {
@@ -64,8 +65,24 @@ public class Node {
 			} 
 		}
 		// If it does, recursive call to right node
-			return right.contains(value);
+			return right.containsR(value);
 
+	}
+	
+	// containI: Searches for node (Iterative) 
+	boolean containsI(int data) {
+		Node current = root;
+		while(current != null) {
+			if(data == current.data) {
+				return true;
+			}
+			if(data < current.data) {
+				current = current.left;
+			} else {
+				current = current.right;
+			}
+		}
+		return false;
 	}
 	
 	void printInorder() {
