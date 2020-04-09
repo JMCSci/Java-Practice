@@ -11,15 +11,12 @@ public class Node {
 	// Constructor will be the first node/root node
 	Node(int data) {
 		this.data = data;
-		left = null;
-		right = null;
+		if(root == null) {
+		   this.root = this;
+		}
 	}
 	
 	void insert(int newValue) {
-		// Constructor is now root node
-		if(root == null) {
-			this.root = this;
-		}
 		// If newValue is less than or equal to data in node
 		// Look to left and right to see where we want to insert it
 		if(newValue <= data) {
