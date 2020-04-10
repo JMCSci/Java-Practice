@@ -63,5 +63,26 @@ class LinkedList {
 		}
 	}
 	
+	// addFirst: Add element to front of list
+	void addFirst(int data) {
+		Node node = new Node(data);
+		node.next = head;
+		head = node;
+	}
+	
+	// addLast: Add element to end of list
+	void addLast(int data) {
+		Node current = head;
+		while(current != null) {
+			if(current.next == null) {
+				Node node = new Node(data);
+				current.next = node;
+				tail = node;
+				break;
+			}
+			current = current.next;
+		}
+	}
+	
 	
 }
