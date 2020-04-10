@@ -63,6 +63,26 @@ class LinkedList {
 		}
 	}
 	
+	// removeFirst: Remove first element in list
+	void removeFirst() {
+		Node current = head;
+		head = current.next;
+		current = null;
+	}
+	
+	// removeLast: Remove last element in list
+	void removeLast() {
+		Node current = head;
+		while(current != null) {
+			if(current.next.next == null) {
+				tail = current;
+				current.next = null;
+			}
+			current = current.next;
+		}
+	}
+	
+	
 	// addFirst: Add element to front of list
 	void addFirst(int data) {
 		Node node = new Node(data);
