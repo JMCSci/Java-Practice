@@ -87,6 +87,7 @@ class LinkedList {
 	void addFirst(int data) {
 		Node node = new Node(data);
 		node.next = head;
+		head.prev = node;
 		head = node;
 	}
 	
@@ -97,6 +98,7 @@ class LinkedList {
 			if(current.next == null) {
 				Node node = new Node(data);
 				current.next = node;
+				node.prev = current;
 				tail = node;
 				break;
 			}
