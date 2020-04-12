@@ -164,8 +164,7 @@ public class Node {
 		Node current = root;		 			
 		Node parent = null;						// keep track of node to be removed parent 
 		while(current != null) {
-			if(value == current.data) {	
-				
+			if(value == current.data) {		
 				break;							// stop checking when value is found - current node and parent node are now saved
 			} else {
 				parent = current;
@@ -176,10 +175,10 @@ public class Node {
 				}
 			}
 		}
-		
-		
-		
+
 		// CASE 1 -- Not in tree
+		
+		
 
 		// CASE 2 -- If no children -- LEAF
 		if(current.left == null && current.right == null) {
@@ -190,6 +189,65 @@ public class Node {
 			}
 			
 		}
+		
+		// CASE 3 -- If its the root 
+		// Go to the left, then as far right as possible
+		else if(parent == null) {
+			Node leftChild;
+			Node rightChild;
+			Node leftMost;
+			Node rightMost;
+			Node rightMostParent = null;
+
+			/* LEFT SIDE */
+			// Save left and right child of root
+			leftChild = current.left;
+			rightChild = current.right;
+			// Find second largest node on left side of tree -- rightMost 
+			if(current.left != null) {
+				// Go left
+				rightMost = current.left;
+				// Keep going to the right
+				while(rightMost != null) { 
+					// If there isn't a right then rightMost will be the current value
+					if(rightMost.right == null) {
+						break;
+					}
+					rightMostParent = rightMost;
+					rightMost = rightMost.right;
+				}
+				// Check if rightMost has a left child 
+				// If it does it must connect to parent of rightMost
+				if(rightMost.left != null) {
+					rightMostParent.right = rightMost.left;
+				}
+
+				// Connect 
+				current.data = rightMost.data;		// copy contents into root node
+				rightMostParent.right = null;
+			} else {
+				if(current.right != null) {
+					// Go right
+					leftMost = current.right;
+					// Keep going to the left
+					while(leftMost.left != null) {
+						// If there isn't a right left then rightMost will be the current value
+						if(leftMost.left == null) {
+							break;
+						}
+						leftMost = leftMost.left;
+						// Connect
+						leftChild = current.left;
+						rightChild = current.right;
+						current = leftMost;
+						current = null;
+						
+					}
+				}
+			}
+		}
+			/* RIGHT SIDE */
+			// Find second smallest node on right side of tree -- leftMost
 		// CASE 3 -- If one child
 		else if(current.left == null || current.right == null) {
 			/* LEFT SIDE */
@@ -221,59 +279,72 @@ public class Node {
 				}
 
 			}
-			// CASE 4 -- If two children 
+			// CASE 4 -- If two children  
 			// Find leftmost child of right subtree -- go to right, then go as far left as possible
 		} else if(current.left != null && current.right != null) {
 			// We don't know which side current (child) is on parent -- this will verify
+			Node leftMostParent = null;	// temp to track parent of leftmost node -- needed to remove connection
 			Node leftMost;
 			Node leftChild;			// temp hold left node child node of soon to be deleted node
 			Node rightChild;		// temp hold right child node of soon to be deleted node
 			/* LEFT SIDE */
 			if(current.data < parent.data) {
+				// Save right child (and its tree)
 				rightChild = current.right;
 				// Check if there is a right node
 				if(current.right != null) {
 					leftMost = current.right;
 					// Find left most node -- go as far left as possible
-					while(leftMost.left != null) {
-						leftMost = current.left;
+					while(leftMost.left != null) { 
+						if(leftMost.left == null) {
+							break;
+						}
+						// Need to track parent of left most node 
+						leftMostParent = leftMost;
+						// Need parent of leftmost to remove connection to left side
+						leftMost = leftMost.left;
+					}
+					// If right child doesn't have a left child -- set parent to current
+					if(leftMostParent == null) {
+						leftMostParent = current; 
 					}
 				} else {
 					// There isn't a left node -- we just take the right node instead
 					leftMost = current.right;
 				}
-				parent.right = rightChild;
-				parent.left = leftMost;
-				current = null;
+				current.data = leftMost.data;
+				// Need parent of leftmost to remove connection to left side
+				leftMostParent.right = null;   
 			/* RIGHT SIDE */
 			} else {
 				leftChild = current.left;
 				if(current.right != null) {
-					leftMost = current.right;
+					leftMost = current.right; 
+					
+				
 					// Find left most node -- go as far left as possible 
 					while(leftMost.left != null) {
-						leftMost = leftMost.left; 
+						if(leftMost.left == null) {
+							break;
+						}
+						// Need to track parent of left most node
+						leftMostParent = leftMost;
+						leftMost = leftMost.left;
 					}
 				} else {
 					// There isn't a left node -- we just take the right node instead
 					leftMost = current.right;
 				}
-				parent.left = leftChild;
-				System.out.println(parent.left.data);
-				parent.right = leftMost;
-				current = null;
+				
+				current.data = leftMost.data;
+				// Need parent of leftmost to remove connection to left side
+				leftMostParent.left = null;
+				
 			}
-			
-			
-			
-			
-		}
-		
-		
-			
-	
-	}
 
+		} 
+
+	}
 
 
 }
