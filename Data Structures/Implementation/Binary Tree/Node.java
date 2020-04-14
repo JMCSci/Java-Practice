@@ -5,6 +5,7 @@ package binarytree;
 public class Node {
 	int data;		// root value
 	static int leaves;
+	static int parentNodes;
 	Node left;
 	Node right;
 	Node root;
@@ -231,6 +232,20 @@ public class Node {
 		}
 			return leaves;
 		}
+	
+	// numberOfParent: Returns number of parents in tree
+	int numberOfParents() {
+		if(left != null || right != null) {
+			parentNodes++;
+		}
+		if(left != null) {
+			left.numberOfLeaves();
+		}
+		if(right != null) {
+			right.numberOfLeaves();
+		}
+			return parentNodes;
+	}
 
 
 
