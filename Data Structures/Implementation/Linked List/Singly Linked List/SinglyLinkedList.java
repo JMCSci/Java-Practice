@@ -102,6 +102,26 @@ class LinkedList {
 		return size;
 	}
 	
+	// delete: Delete current node (singly linked list algorithm)
+	void delete(int data) {
+		Node current = head;
+		Node previous = null;			// pointer to previous node
+		while(current != null) {
+			if(current.data == data) {
+				break;
+			}
+			previous = current;
+			current = current.next;
+		}
+		if(previous == null) {
+			head = current.next;
+		} else {
+			previous.next = current.next; 
+		}
+		
+	
+	}
+	
 	
 }
 
