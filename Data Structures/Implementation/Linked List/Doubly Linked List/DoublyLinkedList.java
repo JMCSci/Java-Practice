@@ -109,15 +109,23 @@ class LinkedList {
 	// delete: Delete current node (doubly linked list algorithm)
 	void delete(int data) {
 		Node current = head;
+		Node previous = null;
 		// traverse through list to find data
 		while(current != null) {
 			if(current.data == data) {
 				break;
 			}
+			previous = current;			// tracks the previous node
 			current = current.next;
+			}
+		// Previous is null so that means this head of list
+		if(previous == null) {
+			head = current.next;
+		} else {
+			current.next.prev = current.prev;
+			current.prev.next = current.next;
 		}
-		current.next.prev = current.prev;
-		current.prev.next = current.next;
+		
 	}
 	
 	
