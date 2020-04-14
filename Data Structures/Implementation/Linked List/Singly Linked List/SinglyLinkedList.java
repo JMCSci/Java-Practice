@@ -122,6 +122,18 @@ class LinkedList {
 	
 	}
 	
+	// contains: Checks if value is in list (iterative)
+	boolean contains(int data) {
+		Node current = head;
+		while(current != null) {
+			if(current.data == data) {
+				return true;
+			}
+			current = current.next;
+		}
+		return false;
+	}
+	
 	
 }
 
