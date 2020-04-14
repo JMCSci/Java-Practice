@@ -106,5 +106,19 @@ class LinkedList {
 		}
 	}
 	
+	// delete: Delete current node (doubly linked list algorithm)
+	void delete(int data) {
+		Node current = head;
+		// traverse through list to find data
+		while(current != null) {
+			if(current.data == data) {
+				break;
+			}
+			current = current.next;
+		}
+		current.next.prev = current.prev;
+		current.prev.next = current.next;
+	}
+	
 	
 }
