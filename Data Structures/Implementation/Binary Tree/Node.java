@@ -18,31 +18,40 @@ public class Node {
 		}
 	}
 	
-	void insert(int newValue) {
-		// If newValue is less than or equal to data in node
-		// Look to left and right to see where we want to insert it
-		if(newValue <= data) {
-			// BASE CASE -- STOPPING CONDITION
-			// If newValue meets condition, then we insert it on the left side  
-			// If node on left doesn't exist, create one with newValue
-			if(left == null) {
-				left = new Node(newValue);	
-			} else {
-				// If it already does, insert it   
-				left.insert(newValue);
-			}
-			// If newValue is greater than data, insert Node on right
+	// insert: Adds a new node to tree (no duplicates)
+	boolean insert(int newValue) {	
+		// Checks if newValue is a duplicate
+		if(containsR(newValue) == true) {
+			return false;
 		} else {
-			// BASE CASE -- STOPPING CONDITION
-			// If there is no right node, create a new one
-			if(right == null) {
-				right = new Node(newValue);
+			// If newValue is less than or equal to data in node
+			// Look to left and right to see where we want to insert it
+			if(newValue <= data) {
+				// BASE CASE -- STOPPING CONDITION
+				// If newValue meets condition, then we insert it on the left side  
+				// If node on left doesn't exist, create one with newValue
+				if(left == null) {
+					left = new Node(newValue);	
+					return true;
+				} else {
+					// If it already does, insert it   
+					left.insert(newValue);
+				}
+				// If newValue is greater than data, insert Node on right
 			} else {
-				// Ask right to insert node 
-				right.insert(newValue);
+				// BASE CASE -- STOPPING CONDITION
+				// If there is no right node, create a new one
+				if(right == null) {
+					right = new Node(newValue);
+					return true;
+				} else {
+					// Ask right to insert node 
+					right.insert(newValue);
+				}
 			}
+			
 		}
-		
+		return false;
 	}
 	
 	// containsR: Searches for node (Recursive)
