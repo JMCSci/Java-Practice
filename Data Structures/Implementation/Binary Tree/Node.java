@@ -4,8 +4,8 @@ package binarytree;
 
 public class Node {
 	int data;		// root value
-	static int leaves;
-	static int parentNodes;
+	int leaves;
+	int parentNodes;
 	Node left;
 	Node right;
 	Node root;
@@ -234,13 +234,13 @@ public class Node {
 			leaves++;
 		}
 		if(left != null) {
-			left.numberOfLeaves();
+			leaves += left.numberOfLeaves();
 		}
 		if(right != null) {
-			right.numberOfLeaves();
+			leaves += right.numberOfLeaves();
 		}
-			return leaves;
-		}
+		return leaves;
+	}
 	
 	// numberOfParent: Returns number of parents in tree
 	int numberOfParents() {
@@ -248,12 +248,12 @@ public class Node {
 			parentNodes++;
 		}
 		if(left != null) {
-			left.numberOfLeaves();
+			parentNodes += left.numberOfLeaves();
 		}
 		if(right != null) {
-			right.numberOfLeaves();
+			parentNodes += right.numberOfLeaves();
 		}
-			return parentNodes;
+		return parentNodes;
 	}
 
 
