@@ -6,6 +6,7 @@ public class Node {
 	int data;		// root value
 	int leaves;
 	int parentNodes;
+	int numberOfNodes = 1;
 	Node left;
 	Node right;
 	Node root;
@@ -136,7 +137,7 @@ public class Node {
 		}
 	}
 	
-	// min: Returns the smallest number in the tree
+	// min: Returns the smallest number in the tree (Iterative)
 	int min() {
 		Node current = root;
 		if(current.left == null) {
@@ -153,7 +154,15 @@ public class Node {
 	
 	}
 	
-	// max: Returns the largest number in the tree
+	// minR: returns the smallest number in the tree (Recursive)
+	int min() {
+		if(left == null) {
+			return data;
+		}
+		return left.minR();
+	}
+	
+	// max: Returns the largest number in the tree (Iterative)
 	int max() {
 		Node current = root;
 		if(current.right == null) {
@@ -168,6 +177,15 @@ public class Node {
 			return current.data;	
 		}
 	}
+	
+	// maxR: Returns the largest number in the tree (Recursive)
+	int maxR() {
+		if(right == null) {
+			return data;
+		}
+		return right.maxR();
+	}
+
 	
 	
 	void delete(int value) {
@@ -254,6 +272,17 @@ public class Node {
 			parentNodes += right.numberOfLeaves();
 		}
 		return parentNodes;
+	}
+	
+	// nodes: Returns the number of nodes in the tree
+	int nodes() {
+		if(left != null) {
+			numberOfNodes += left.nodes();
+		}
+		if(right != null) {
+			numberOfNodes += right.nodes();
+		}
+		return numberOfNodes;
 	}
 
 
