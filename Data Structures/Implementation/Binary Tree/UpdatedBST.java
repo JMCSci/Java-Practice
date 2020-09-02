@@ -44,10 +44,10 @@ public class TreeNode {
 			return false;
 		}
 		
-		if(data <= value) {
+		if(value < data) {
 			if(left == null) {
 				left = new TreeNode(value);
-				size++;
+				root.size++;
 				return true;
 			} else {
 				left.insertRecursive(value);
@@ -55,7 +55,7 @@ public class TreeNode {
 		} else {
 			if(right == null) {
 				right = new TreeNode(value);
-				size++;
+				root.size++;
 				return true;
 			} else {
 				right.insertRecursive(value);
@@ -81,12 +81,11 @@ public class TreeNode {
 	}
 	
 	void inorderRecursive() {
-		TreeNode current = root;
-		if(current.left != null) {
+		if(left != null) {
 			left.inorderRecursive();
 		}
 		System.out.println(data);
-		if(current.right != null) {
+		if(right != null) {
 			right.inorderRecursive();
 		}
 	}
