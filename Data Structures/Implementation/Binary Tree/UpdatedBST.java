@@ -39,6 +39,31 @@ public class TreeNode {
 		size++;
 	}
 	
+	boolean insertRecursive(int value) {
+		if(data == value) {
+			return false;
+		}
+		
+		if(data <= value) {
+			if(left == null) {
+				left = new TreeNode(value);
+				size++;
+				return true;
+			} else {
+				left.insertRecursive(value);
+			}
+		} else {
+			if(right == null) {
+				right = new TreeNode(value);
+				size++;
+				return true;
+			} else {
+				right.insertRecursive(value);
+			}
+		}
+		return false;
+	}
+	
 	void inorder() {
 		Stack<TreeNode> stack = new Stack<>();
 		TreeNode current = root;
@@ -78,6 +103,18 @@ public class TreeNode {
 			}
 		}
 		return false;
+	}
+	
+	int size() {
+		return size;
+	}
+	
+	int getRoot() {
+		return data;
+	}
+	
+	TreeNode getRootNode() {
+		return root;
 	}
 	
 
