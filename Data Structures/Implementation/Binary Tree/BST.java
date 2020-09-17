@@ -5,15 +5,16 @@ import java.util.Stack;
 public class Main {
 
     public static void main(String[] args) {
-	TreeNode tree = new TreeNode(6);
-	tree.insert(4);
-	tree.insert(-2);
-	tree.insert(9);
-	tree.insertRecursive(100);
-	tree.insertRecursive(-200);
-    tree.inorderStack();
-    boolean inTree = tree.contains(4);
-    System.out.println(inTree);
+	    TreeNode tree = new TreeNode(6);
+	    tree.insert(4);
+	    tree.insert(-2);
+	    tree.insert(9);
+	    tree.insertRecursive(100);
+	    tree.insertRecursive(-200);
+	    tree.delete(-200);
+	    tree.inorderStack();
+	    boolean inTree = tree.contains(4);
+	    System.out.println(inTree);
     }
 }
 
@@ -35,7 +36,7 @@ class TreeNode {
         TreeNode current = root;
         while(current != null){
             if(value == current.data){
-                break;
+                return;
             } else if(value < current.data && current.left != null){
                 current = current.left;
             } else if(value > current.data && current.right != null){
@@ -61,17 +62,15 @@ class TreeNode {
         if(value < data){
             if(left != null){
                 left.insertRecursive(value);
+            } else{
+                left = new TreeNode(value);
             }
-        } else if(value > data){
+        } else {
             if(right != null){
                 right.insertRecursive(value);
+            } else{
+                right = new TreeNode(value);
             }
-        }
-
-        if(value < data && left == null){
-            left = new TreeNode(value);
-        } else if(value > data && right == null){
-            right = new TreeNode(value);
         }
     }
 
@@ -93,25 +92,30 @@ class TreeNode {
 
         // Case 1: If there is no left node --> connect parent with current node successor
         if(current.left == null){
-            if(parent == null){
+            if(parent == null) {
                 root = current.right;
-            } else if(value < current.data){
-                parent.left = current.right;
-            } else if(value > current.data){
-                parent.right = current.right;
+            }else {
+                if (value < parent.data) {
+                    parent.left = current.right;
+                } else if (value > parent.data) {
+                    parent.right = current.right;
+                }
             }
         // Case 2: If there is a left node --> find max and parent of max in left subtree
         } else{
-            TreeNode parentOfRightMost = current;
             TreeNode rightMost = current.left;
-            while(current.right != null){
-                parentOfRightMost = current;
-                current = current.right;
+            TreeNode parentOfRightMost = current;
+            while(rightMost.right != null){
+                parentOfRightMost = rightMost;
+                rightMost = rightMost.right;
             }
+
+            current.data = rightMost.data;
+
             if(parentOfRightMost.right == rightMost){
-                parentOfRightMost.left = rightMost.left;
-            } else{
                 parentOfRightMost.right = rightMost.left;
+            } else{
+                parentOfRightMost.left = rightMost.left;
             }
         }
 
@@ -157,5 +161,5 @@ class TreeNode {
         }
         System.out.println();
     }
-    
+
 }
