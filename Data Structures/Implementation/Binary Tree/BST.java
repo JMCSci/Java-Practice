@@ -6,18 +6,14 @@ public class Main {
 
     public static void main(String[] args) {
 	TreeNode tree = new TreeNode(6);
-	tree.insert(1);
-	tree.insert(5);
-	tree.insert(0);
-	tree.insert(2);
 	tree.insert(4);
-	tree.insert(8);
-	tree.inorderStack();
-	tree.min();
-	tree.max();
-	System.out.println(tree.contains(-1));
-	tree.delete(4);
-	tree.inorder();
+	tree.insert(-2);
+	tree.insert(9);
+	tree.insertRecursive(100);
+	tree.insertRecursive(-200);
+    tree.inorderStack();
+    boolean inTree = tree.contains(4);
+    System.out.println(inTree);
     }
 }
 
@@ -38,27 +34,51 @@ class TreeNode {
         TreeNode node = new TreeNode(value);
         TreeNode current = root;
         while(current != null){
-            if(value < current.data && current.left != null){
+            if(value == current.data){
+                break;
+            } else if(value < current.data && current.left != null){
                 current = current.left;
             } else if(value > current.data && current.right != null){
                 current = current.right;
-            } else if(value == current.data){
-                return;
             } else{
                 break;
             }
         }
+
         if(value < current.data && current.left == null){
             current.left = node;
         } else if(value > current.data && current.right == null){
             current.right = node;
         }
+
+    }
+
+    void insertRecursive(int value){
+        if(value == data){
+            return;
+        }
+
+        if(value < data){
+            if(left != null){
+                left.insertRecursive(value);
+            }
+        } else if(value > data){
+            if(right != null){
+                right.insertRecursive(value);
+            }
+        }
+
+        if(value < data && left == null){
+            left = new TreeNode(value);
+        } else if(value > data && right == null){
+            right = new TreeNode(value);
+        }
     }
 
     void delete(int value){
-        // Find the node to be deleted AND its parent
-        TreeNode current = root;
+        // Find the node to delete and its parent
         TreeNode parent = null;
+        TreeNode current = root;
         while(current != null){
             if(value == current.data){
                 break;
@@ -70,36 +90,31 @@ class TreeNode {
                 current = current.right;
             }
         }
-        // CASE 1: There is no left node --> connect predecessor to successor
+
+        // Case 1: If there is no left node --> connect parent with current node successor
         if(current.left == null){
             if(parent == null){
-                root = current.right;   // If node to be deleted is the root node
-            } else{
-                if(value < parent.data){
-                    parent.left = current.right;
-                } else if(value > parent.data){
-                    parent.right = current.right;
-                }
+                root = current.right;
+            } else if(value < current.data){
+                parent.left = current.right;
+            } else if(value > current.data){
+                parent.right = current.right;
             }
-            return;
-        }
-        // CASE 2: There is a left node --> find max value in left subtree AND its parent
-        if(current.left != null) {
-            TreeNode rightMost = current.left;
+        // Case 2: If there is a left node --> find max and parent of max in left subtree
+        } else{
             TreeNode parentOfRightMost = current;
-            while (rightMost.right != null) {
-                parentOfRightMost = rightMost;
-                rightMost = rightMost.right;
+            TreeNode rightMost = current.left;
+            while(current.right != null){
+                parentOfRightMost = current;
+                current = current.right;
             }
-
-            current.data = rightMost.data;     // Exchange values
-
-            if (parentOfRightMost.right == rightMost) {
-                parentOfRightMost.right = rightMost.left;   // Delete node
-            } else {
+            if(parentOfRightMost.right == rightMost){
                 parentOfRightMost.left = rightMost.left;
+            } else{
+                parentOfRightMost.right = rightMost.left;
             }
         }
+
     }
 
     boolean contains(int value){
@@ -116,32 +131,14 @@ class TreeNode {
         return false;
     }
 
-    int min(){
-        TreeNode current = root;
-        while(current.left != null){
-            current = current.left;
-        }
-        System.out.println(current.data);
-        return current.data;
-    }
-
-    int max(){
-        TreeNode current = root;
-        while(current.right != null){
-            current = current.right;
-        }
-        System.out.println(current.data);
-        return current.data;
-    }
-
     void inorderStack(){
-        TreeNode current = root;
         Stack<TreeNode> stack = new Stack<>();
-        while(!stack.isEmpty() || current != null) {
-            if (current != null) {
+        TreeNode current = root;
+        while(!stack.isEmpty() || current != null){
+            if(current != null){
                 stack.push(current);
                 current = current.left;
-            } else {
+            } else{
                 current = stack.pop();
                 System.out.print(current.data + " ");
                 current = current.right;
@@ -158,7 +155,7 @@ class TreeNode {
         if(right != null){
             right.inorder();
         }
+        System.out.println();
     }
-
-
+    
 }
